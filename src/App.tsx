@@ -1,9 +1,11 @@
+import Countries from './containers/Countries/Countries.tsx';
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
-
-    </div>
+    <>
+     <Countries/>
+    </>
   );
 };
 
