@@ -9,6 +9,8 @@ export interface ApiCountry {
   capital: string;
   population: number;
   region: string;
+  area: number;
+  alpha3Code: string;
   borders: Borders[];
 }
 
