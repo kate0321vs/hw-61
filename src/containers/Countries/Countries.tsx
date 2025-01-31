@@ -2,20 +2,17 @@ import { ApiCountries } from '../../types';
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../globalConstants.ts';
-import CountiesList from '../../components/CountiesList/CountiesList.tsx';
+import CountriesList from '../../components/CountriesList/CountiesList.tsx';
+import CountryInfo from '../../components/CountryInfo/CountryInfo.tsx';
 
 
 const Countries = () => {
   const [countries, setCountries] = useState<ApiCountries[]>([]);
+  const [selectedCountryCode, setSelectedCountryCode] = useState<string>();
 
   const fetchData = useCallback( async () => {
     const countriesResponse = await axios<ApiCountries[]>(BASE_URL);
-    setCountries(countriesResponse.data.map(country => (
-      {
-      ...country,
-      id: Math.random(),
-      }
-      )));
+    setCountries(countriesResponse.data);
   },[]);
 
   useEffect(() => {
@@ -23,8 +20,9 @@ const Countries = () => {
   }, [fetchData]);
 
   return (
-    <div>
-       <CountiesList countries={countries}/>
+    <div className="d-flex justify-content-between mx-3 my-3">
+       <CountriesList countries={countries} onClickCard={(alphaCode) => setSelectedCountryCode(alphaCode)}/>
+      {selectedCountryCode && <CountryInfo alpha3Code={selectedCountryCode} />}
     </div>
   );
 };

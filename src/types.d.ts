@@ -1,5 +1,17 @@
 export interface ApiCountries {
   name: string;
   alpha3Code: string;
-  id: number
+}
+
+export interface ApiCountry {
+  name: string;
+  flag: string;
+  capital: string;
+  population: number;
+  region: string;
+  borders: Borders[];
+}
+
+export interface Borders {
+  name: string;
 }

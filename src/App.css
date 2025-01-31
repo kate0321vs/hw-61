@@ -1,0 +1,6 @@
+.CountiesList {
+  overflow-y: scroll;
+  height: 680px;
+  width: 310px;
+  border-radius: 10px;
+}
