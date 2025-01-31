@@ -15,7 +15,6 @@ const CountryInfo: React.FC<Props> = ({alpha3Code}) => {
     if (!alpha3Code) return;
     const response = await axios(COUNTRY_URL + alpha3Code);
     setCountry(response.data);
-    console.log(response.data);
 
    if (response.data.borders) {
      const promises = response.data.borders.map(async(border: string) => {
@@ -25,7 +24,6 @@ const CountryInfo: React.FC<Props> = ({alpha3Code}) => {
      });
      const bordersApi = await Promise.all(promises);
      setBorders(bordersApi);
-     console.log(bordersApi);
    }
   }, [alpha3Code]);
 
